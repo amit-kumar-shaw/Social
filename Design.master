@@ -1,0 +1,353 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Design.master.cs" Inherits="Design" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+        .style2
+        {
+            height: 36px;
+        }
+        .style3
+        {
+            height: 25px;
+            text-align: left;
+        }
+        .style4
+        {
+            height: 24px;
+        }
+    </style>
+</head>
+<body bgcolor="#e9eaed">
+    <form id="form1" runat="server">
+    <div>
+        <table class="style1">
+            <tr>
+                <td class="style2" colspan="2" bgcolor="#662B95">
+                    <table class="style1">
+                        <tr>
+                            <td class="style4" width="15%">
+                            </td>
+                            <td class="style4">
+                                <table class="style1">
+                                    <tr>
+                                        <td class="style3" width="10%">
+                                            <asp:ImageButton ID="ImageButton1" runat="server" Height="25px" 
+                                                ImageUrl="~/images/logo.jpg" Width="22px" PostBackUrl="~/Home.aspx" 
+                                                ToolTip="Bezzie" />
+                                        </td>
+                                        <td class="style3" width="20%">
+                                            <asp:ImageButton ID="ImageButton3" runat="server" Height="100%" 
+                                                ImageUrl="~/images/frqst.jpg" Width="28px" OnMouseOver="this.src='images/frqsth.jpg'" 
+                                                OnMouseOut="this.src='images/frqst.jpg'" ToolTip="Friend Request"/>
+                                            &nbsp;<asp:ImageButton ID="ImageButton4" runat="server" Height="100%" 
+                                                ImageUrl="~/images/msg.jpg" Width="28px" OnMouseOver="this.src='images/msgh.jpg'" 
+                                                OnMouseOut="this.src='images/msg.jpg'" ToolTip="Messages" 
+                                                onclick="ImageButton4_Click"/>
+                                            &nbsp;<asp:ImageButton ID="ImageButton5" runat="server" Height="100%" 
+                                                ImageUrl="~/images/notify.jpg" Width="28px" OnMouseOver="this.src='images/notifyh.jpg'" 
+                                                OnMouseOut="this.src='images/notify.jpg'" ToolTip="Notifications"/>
+                                        </td>
+                                        <td class="style3" width="55%">
+                                            <asp:Button ID="Button1" runat="server" BackColor="#662B95" BorderStyle="None" 
+                                                Font-Size="Medium" ForeColor="White" Text="Home" 
+                                                OnMouseOver="this.style.backgroundColor='#990099'" 
+                                                OnMouseOut="this.style.backgroundColor='#662B95'" Height="100%" 
+                                                onclick="Button1_Click"/>
+                                            <asp:Button ID="btnprofile" runat="server" BackColor="#662B95" BorderStyle="None" 
+                                                Font-Size="Medium" ForeColor="White" Text="Profile" 
+                                                OnMouseOver="this.style.backgroundColor='#990099'" 
+                                                OnMouseOut="this.style.backgroundColor='#662B95'" Height="100%" 
+                                                onclick="Button2_Click"/>
+                                            <asp:Button ID="Button4" runat="server" BackColor="#662B95" BorderStyle="None" 
+                                                Font-Size="Medium" ForeColor="White" Text="Friends" 
+                                                OnMouseOver="this.style.backgroundColor='#990099'" 
+                                                OnMouseOut="this.style.backgroundColor='#662B95'" Height="100%" 
+                                                onclick="ButtonFriend_Click"/>
+                                            <asp:Button ID="Button5" runat="server" BackColor="#662B95" BorderStyle="None" 
+                                                Font-Size="Medium" ForeColor="White" Text="Photos" 
+                                                OnMouseOver="this.style.backgroundColor='#990099'" 
+                                                OnMouseOut="this.style.backgroundColor='#662B95'" Height="100%" 
+                                                onclick="ButtonPhoto_Click"/>
+                                        </td>
+                                        <td class="style3" width="15%">
+                                            <table class="style1">
+                                                <tr>
+                                                    <td style="text-align: right">
+                                            <asp:Button ID="Button3" runat="server" BackColor="#662B95" BorderStyle="None" 
+                                                Font-Size="Small" ForeColor="White" Text="Log Out" 
+                                                OnMouseOver="this.style.backgroundColor='#990099'" 
+                                                OnMouseOut="this.style.backgroundColor='#662B95'" Height="100%" 
+                                                            onclick="Button3_Click" style="text-align: left"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td class="style4" width="35%">
+                                <table class="style1">
+                                    <tr>
+                                        <td>
+                    <asp:TextBox ID="txtsearch" runat="server" placeholder="Search for Friends, Family & Colleagues" 
+                                                Width="100%" ontextchanged="TextBox2_TextChanged"></asp:TextBox>
+                                        </td>
+                                        <td width="20%">
+                                <asp:ImageButton ID="ImageButton2" runat="server" Height="18px" 
+                                    ImageUrl="~/images/search2.jpg" Width="25px" BorderColor="White" BorderWidth="0px" 
+                                                onclick="ImageButton2_Click" ToolTip="Click to search" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+                <td width="85%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%" style="text-align: center" valign="top">
+                    <asp:Image ID="img" runat="server" Height="175px" 
+                        ImageUrl="~/images/male.png" Width="150px" />
+                    <br />
+                    <asp:FileUpload ID="FileUpload1" runat="server" Visible="False" />
+                    <br />
+                    <asp:ImageButton ID="btnedit" runat="server" 
+                        ImageUrl="~/images/edit.png" 
+                        ToolTip="Click to change your profile picture" Height="30px" 
+                        onclick="btnedit_Click" Width="30px" />
+                    <asp:ImageButton ID="btnyes" runat="server" Height="30px" 
+                        ImageUrl="~/images/yes.gif" onclick="btnyes_Click" ToolTip="Change Picture" 
+                        Visible="False" Width="30px" />
+&nbsp;
+                    <asp:ImageButton ID="btnno" runat="server" Height="30px" 
+                        ImageUrl="~/images/256.png" onclick="btnno_Click" ToolTip="Cancel" 
+                        Visible="False" Width="30px" />
+                    <br />
+                    <br />
+                                <asp:HyperLink ID="HyperLink1" runat="server" Font-Underline="False" 
+                                    ForeColor="#662B95" NavigateUrl="~/Home.aspx">Home</asp:HyperLink>
+                            <br />
+                                <asp:HyperLink ID="HyperLink2" runat="server" Font-Underline="False" 
+                                    ForeColor="#662B95" NavigateUrl="~/Profile.aspx">Profile</asp:HyperLink>
+                            <br />
+                                <asp:HyperLink ID="HyperLink3" runat="server" Font-Underline="False" 
+                                    ForeColor="#662B95" NavigateUrl="~/Friends.aspx">Friends</asp:HyperLink>
+                            <br />
+                                <asp:HyperLink ID="HyperLink4" runat="server" Font-Underline="False" 
+                                    ForeColor="#662B95" NavigateUrl="~/Photo.aspx">Photos</asp:HyperLink>
+                            <br />
+                                <asp:HyperLink ID="HyperLink5" runat="server" Font-Underline="False" 
+                                    ForeColor="#662B95" NavigateUrl="~/Message.aspx">Messages</asp:HyperLink>
+                </td>
+                <td rowspan="16" valign="top" width="85%">
+                    <table class="style1">
+                        <tr>
+                            <td valign="top">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+                            </td>
+                            <td width="40%" style="text-align: left" valign="top">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblmssg" 
+                                    runat="server" Font-Bold="True" Font-Size="Large" ForeColor="#660066" 
+                                    Text="Label"></asp:Label>
+&nbsp;<table class="style1">
+                                    <tr>
+                                        <td valign="top" width="7%">
+                                            &nbsp;</td>
+                                        <td valign="top">
+                                            <asp:DataList ID="DataList1" runat="server" BackColor="#E9EAED" 
+                                                BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" 
+                                                ForeColor="Black" GridLines="Horizontal">
+                                                <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                                                <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                                                <ItemTemplate>
+                                                    <table class="style1" width="100%">
+                                                        <tr>
+                                                            <td rowspan="2" width="22%">
+                                                                <asp:Image ID="Image1" runat="server" Height="80px" 
+                                                                    ImageUrl='<%# "profilepic/"+Eval("img") %>' Width="70px" />
+                                                            </td>
+                                                            <td height="30px">
+                                                                <asp:Button ID="Button6" runat="server" BackColor="#E9EAED" BorderStyle="None" 
+                                                                    CommandArgument='<%# Eval("userid") %>' Font-Bold="True" Font-Underline="True" 
+                                                                    ForeColor="#0000CC" onclick="Button6_Click" 
+                                                                    Text='<%# Eval("fname")+" "+Eval("mname")+" "+Eval("lname") %>' />
+                                                                &nbsp;sent you a friend request.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="70%">
+                                                                <table class="style1">
+                                                                    <tr>
+                                                                        <td style="text-align: center" width="50%">
+                                                                            <asp:ImageButton ID="btnaccept" runat="server" 
+                                                                                CommandArgument='<%# Eval("userid") %>' Height="30px" 
+                                                                                ImageUrl="~/images/accept.png" onclick="btnaccept_Click" Width="100px" 
+                                                                                ToolTip="Click to accept the Friend Request" />
+                                                                        </td>
+                                                                        <td style="text-align: center" width="50%">
+                                                                            <asp:ImageButton ID="btndecline" runat="server" 
+                                                                                CommandArgument='<%# Eval("userid") %>' Height="30px" 
+                                                                                ImageUrl="~/images/decline.png" onclick="btndecline_Click" Width="100px" 
+                                                                                ToolTip="Click to reject the Friend Request" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </ItemTemplate>
+                                                <SelectedItemStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                                            </asp:DataList>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                &nbsp;</td>
+                            <td width="40%" style="text-align: left" valign="top">
+                                &nbsp;</td>
+                        </tr>
+                        </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="15%" style="text-align: center">
+                    <table class="style1">
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td style="text-align: left">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td style="text-align: left">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td style="text-align: left">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td style="text-align: left">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td style="text-align: left">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td style="text-align: left">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                &nbsp;</td>
+                            <td>
+                                &nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td width="15%" style="text-align: center">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%" style="text-align: center">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%" style="text-align: center">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%" style="text-align: center">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td width="15%">
+                    &nbsp;</td>
+            </tr>
+        </table>
+        <br />
+    </div>
+    </form>
+</body>
+</html>
